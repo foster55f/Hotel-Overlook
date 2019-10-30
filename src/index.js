@@ -10,6 +10,15 @@ import './css/base.scss';
 import './images/turing-logo.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
-$("#redirect-to-diary").on( "click", function() {
-    window.location.href = "https://aziobrow.github.io/quantified-self/"
-   })
+
+   
+$('.login-button').on('click', function () {
+    console.log('hiii')
+    var user = $(".userName-input").val();
+    console.log(user)
+    if (user === 'manager') {
+      window.location = "./manager-deck.html";
+    } else {
+      window.location = "./user-deck.html";
+    }
+  });

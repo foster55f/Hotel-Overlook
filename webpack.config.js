@@ -35,9 +35,17 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'user-deck.html',
+      template: './src/user-deck.html'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'manager-deck.html',
+      template: './src/manager-deck.html'
     })
   ],
   devServer: {
-         contentBase: './dist'
+         contentBase: './dist',
   }
 };
