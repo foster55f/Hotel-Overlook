@@ -2,10 +2,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    manager: './src/manager-deck.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.bundle.js'
+    filename: '[name].bundle.js'
   },
   devtool: 'inline-source-map',
   mode: 'development',
@@ -17,7 +20,7 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpg|gif|jpeg)$/,
         use: [
               {
                 loader: 'file-loader',
@@ -34,18 +37,19 @@ module.exports = {
   // Below is needed for webpack-dev-server
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'user-deck.html',
-      template: './src/user-deck.html'
+      filename: 'index.html',
+      template: './src/index.html',
+      chunks: ['index'],
+      inject: true
     }),
     new HtmlWebpackPlugin({
       filename: 'manager-deck.html',
-      template: './src/manager-deck.html'
+      template: './src/manager-deck.html',
+      chunks: ['manager'],
+      inject: true
     })
   ],
   devServer: {
-         contentBase: './dist',
+         contentBase: './dist'
   }
 };
