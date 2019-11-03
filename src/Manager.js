@@ -3,9 +3,9 @@ import CustomerCollection from './CustomerCollection';
 
 
 class Manager extends User {
-    constructor(customers, bookings, rooms) {
-        super(bookings, rooms)
-        this.customerCollection = new CustomerCollection(customers)
+    constructor(customerCollection) {
+        super()
+        this.customerCollection = customerCollection;
     }
 
     findPercentageOccupied(date) {

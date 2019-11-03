@@ -3,9 +3,9 @@ import RoomCollection from './RoomCollection';
 
 
 class User {
-    constructor(bookings, rooms) {
-        this.bookingCollection = new BookingCollection(bookings); 
-        this.roomCollection = new RoomCollection(rooms);
+    constructor() {
+        this.bookingCollection = new BookingCollection(); 
+        this.roomCollection = new RoomCollection()
     }
 
     findTotalRoomsAvailableForToday() {

@@ -27,41 +27,38 @@ var room;
 var manager;
 var BookingCollection;
 var roomCollection;
+var customerCollection;
 
 
 var userData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users').then(response => response.json()).then(data => data.users);
-let roomData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms').then(response => response.json()).then(data => data.rooms);
-let bookingData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings').then(response => response.json()).then(data => data.bookings);
+// let roomData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms').then(response => response.json()).then(data => data.rooms);
+// let bookingData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings').then(response => response.json()).then(data => data.bookings);
 
-// Promise.all([userData, roomData, bookingData]).then((promise) => {
-//     userData = promise[0];
-//     roomData = promise[1];
-//     bookingData = promise[2];
-// }).then(() => {
-//     user = new User(bookingData, roomData);   
-//     customers = new CustomerCollection(userData);
-//     console.log(userData)
-    // roomCollection = new RoomCollection();
-    // manager = new Manager(userData);
-    // customer = new Customer(userData);
-    // bookingCollection = new BookingCollection();
-    // customerCollection = new CustomerCollection(userData)
+Promise.all([userData]).then((promise) => {
+    userData = promise[0];
+}).then(() => {
+    customerCollection = new CustomerCollection(userData);
+    manager = new Manager(customerCollection)
+    user = new User()
+
     pageLoadAfterFetch();
-  });
+});
 
-// $(".room1").text(`Total Rooms Available Today: ${user.findTotalRoomsAvailableForToday()}`);
-// $(".room2").text(`Total Rooms Available Today: ${user.findTotalRoomsAvailableForToday()}`);
 
-// $(document).ready(function () {
-//     roomCollection = new RoomCollection();
-// });
+// // $(".room1").text(`Total Rooms Available Today: ${user.findTotalRoomsAvailableForToday()}`);
+// // $(".room2").text(`Total Rooms Available Today: ${user.findTotalRoomsAvailableForToday()}`);
+
+// // $(document).ready(function () {
+// //     roomCollection = new RoomCollection();
+// // });
 
 function pageLoadAfterFetch() {
+    console.log(manager)
     let id = localStorage.getItem('key')
-    console.log(id)
-    let currentUser = customers.getUserData(parseInt(id))
+    let currentUser = customerCollection.getUserData(parseInt(id))
     $('.welcome-user').text(currentUser.name)
   }
+
   
 
 $('.login-button').on('click', function () {
@@ -69,9 +66,10 @@ $('.login-button').on('click', function () {
     var password = $(".userName-password").val()
     var id = user.slice(-2)
     localStorage.setItem('key',id)
-    if (user === 'manager' && password === '') {
-        console
-      window.location = "./manager-deck.html";
+    if (user === 'manager') {
+        window.location = "./manager-deck.html";
+        manager = new Manager(customerCollection)
+        console.log(manager)
     } else {
         window.location = "./user-deck.html";
     }
@@ -97,7 +95,6 @@ $(".rooms-occupied-btn").on('click', function () {
 });
 
 $(".customer-search-btn").on('click', function () {
-    customers = new CustomerCollection(userData);
     var searchVal = $('#customer-search').val();
     var customerNames = customers.findAllByName(searchVal)
     if (customerNames.length === 0) {
