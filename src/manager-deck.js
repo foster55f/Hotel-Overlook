@@ -31,4 +31,6 @@ Promise.all([userData, roomData, bookingData]).then((promise) => {
     bookingCollection = new BookingCollection(bookingData);
 
     manager = new Manager(customerCollection, roomCollection, bookingCollection);
+    let value = $('.total-revenue').html(manager.findTotalRevenueForToday())
+    console.log(manager)
   });

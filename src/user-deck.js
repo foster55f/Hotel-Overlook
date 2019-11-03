@@ -32,7 +32,7 @@ import './images/clouds-daylight-environment-462146.jpg'
 $(document).ready(function () {
     customerCollection = new CustomerCollection(userData);
     let id = localStorage.getItem('key')
-    console.log(id)
     let currentUser = customerCollection.getUserData(parseInt(id))
+    console.log(currentUser)
     $('.welcome-user').text(currentUser.name)
 });
