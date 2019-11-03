@@ -1,6 +1,89 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+$primary-background: white;
+
+@mixin button-style {
+  margin: 0;
+  padding: 5px;
+  list-style: none;
+  color: green;
+  font-size: 11px;
+}
 
 body {
   background-color: $primary-background;
+  background-image: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ), url("../images/clouds-daylight-environment-462146.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  height: 100vh;
+  grid-template-areas:
+  "nav main main"
+  "nav main main"
+  "nav main main";
+  grid-template-columns: .5fr 1fr 1fr;
+  grid-template-rows: .5fr 1fr 1fr;
+  margin: 0 auto;
 }
+
+/* Left-side page styling */
+nav {
+  background-color: #0b466d;
+  color: white;
+  grid-area: nav;
+  
+  button{
+  @include button-style;
+    width: 85%;
+    margin-left: 18px;
+  }
+}
+
+.nav-text {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  height: 50%;
+  justify-content: center;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+button {
+  @include button-style;
+  
+}
+
+h1 {
+  color:white;
+  text-align: center; 
+}
+
+label {
+  font-size: x-large;
+  color: white;
+}
+
+ul {
+  list-style: none;
+}
+
+section ul {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  font-size: 26px;
+  height: 80%;
+  justify-content: space-around;
+  margin-left: -20px;
+}
+
+
+
+
