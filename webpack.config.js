@@ -4,7 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     index: './src/index.js',
-    manager: './src/manager-deck.js'
+    manager: './src/manager-deck.js',
+    user: './src/user-deck.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -46,6 +47,12 @@ module.exports = {
       filename: 'manager-deck.html',
       template: './src/manager-deck.html',
       chunks: ['manager'],
+      inject: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'user-deck.html',
+      template: './src/user-deck.html',
+      chunks: ['user'],
       inject: true
     })
   ],

@@ -53,7 +53,6 @@ Promise.all([userData]).then((promise) => {
 // // });
 
 function pageLoadAfterFetch() {
-    console.log(manager)
     let id = localStorage.getItem('key')
     let currentUser = customerCollection.getUserData(parseInt(id))
     $('.welcome-user').text(currentUser.name)
