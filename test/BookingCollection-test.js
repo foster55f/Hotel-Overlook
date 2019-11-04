@@ -12,6 +12,5 @@ describe('BookingCollection', () => {
 
     it('should be a function', () => {
         expect(BookingCollection).to.be.a('function');
-      });
-
+    });
 });

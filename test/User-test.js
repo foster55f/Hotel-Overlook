@@ -7,5 +7,5 @@ import User from '../src/user';
 describe('User', function() {
     it('should be a function', () => {
         expect(User).to.be.a('function');
-      });
-  });
+    });
+});

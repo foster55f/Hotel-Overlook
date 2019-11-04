@@ -1,8 +1,8 @@
 import Booking from "./Booking";
 
 class BookingCollection {
-    constructor() {
-        this.bookings = BookingCollection.loadFromData();
+    constructor(bookings) {
+        this.bookings = bookings
     }
 
     findBookedRoomNumbers(date) {
@@ -11,7 +11,7 @@ class BookingCollection {
     }
 
     findAllForCustomer(customerId) {
-        return this.bookings.filter(booking => booking.id === customerId)
+        return this.bookings.filter(booking => booking.userID === customerId)
     }
 
     // deleteFromData() {

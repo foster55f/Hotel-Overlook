@@ -1,17 +1,13 @@
-import BookingCollection from './BookingCollection';
-import RoomCollection from './RoomCollection';
-
 
 class User {
-    constructor() {
-        this.bookingCollection = new BookingCollection(); 
-        this.roomCollection = new RoomCollection()
+    constructor(bookingCollection, roomCollection) {
+        this.bookingCollection = bookingCollection
+        this.roomCollection = roomCollection
     }
 
     findTotalRoomsAvailableForToday() {
         let date = Date.now();
-        console.log(this.roomCollection)
-        let bookedRoomNumbers = this.bookingCollection.bookedRoomNumbers(date);
+        let bookedRoomNumbers = this.bookingCollection.findBookedRoomNumbers(date);
         let roomsAvailable = this.roomCollection.findAvailableRooms(bookedRoomNumbers);
         return roomsAvailable
     }

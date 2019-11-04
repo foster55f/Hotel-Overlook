@@ -12,5 +12,5 @@ describe('Room', () => {
 
     it('should be a function', () => {
         expect(Room).to.be.a('function');
-      });
+    });
 });

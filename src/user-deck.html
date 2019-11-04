@@ -3,31 +3,23 @@
   <head>
     <title>Webpack Starter Kit</title>
   </head>
-  <body>
-    <h1></h1>
-    <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
-    <nav>
-      <div class="nav-text">
-        <h1>Welcome <span class="welcome-user"></span></h1>
-        <p class="average-stepGoal"></p>
-        <p class="profile-text">Account Information</p>
-      </div>
-      <div class="btn-container">
-        <button class="room-bookings-btn" type="button" name="button"><span class="view">View</span> Room Bookings Made</button>
-        <button class="total-amountSpent-btn" type="button" name="button"><span class="view">View</span>Total Amount Spent On Rooms</button>
-        </div>
-    </nav>
-    <main>
-      <label for="start">Book a Room:</label>
+  <body class="customer-full">
+    <h1 class="welcome-user">Welcome </h1>
+    <section class="customer-data">
+        <h1>Your Bookings:</h1>
+        <h1 class="customer-bookings"></h1>
+        <h1>Total Spent On Rooms: $ <span class="customer-spending"></span></h1>
+      </section>
+    <section class="customer-hotel-booking-info">
+      <h2>Book a Room</h2>
       <input class= "date-picked" type="date" id="start" name="trip-start">
       <button class="book-room-btn" type="button" name="button"><span class="view">View</span>Book Room</button>
-      <section class="roomtype-menu">
-        <input type="radio" class="create-booking-input" value="residential suite">Residential Suite</input></br>
-        <input type="radio" class="create-booking-input" value="single room">Single Room</input></br>
-        <input type="radio" class="create-booking-input" value="suite">Suite</input></br>
-        <input type="radio" class="create-booking-input" value="junior suite">Junior Suite</input>
-      </section>
+      <h2 class="customer-bookings"><span>Pick Room Type:</span><select class="selection">
+        <option value="residential suite">Residential Suite</option>
+        <option value="single room">Single Room</option>
+        <option value="suite">Suite</option>
+        <option value="junior suite">Junior Suite</option>
+      </select>
     </main>
-    
   </body>
 </html>

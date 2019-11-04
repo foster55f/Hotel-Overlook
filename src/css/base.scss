@@ -12,17 +12,17 @@ $primary-background: white;
 body {
   background-color: $primary-background;
   background-image: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ), url("../images/clouds-daylight-environment-462146.jpg");
-  background-repeat: no-repeat;
+  background-repeat: no-repeat center center fixed;
   background-size: cover;
-  display: grid;
-  height: 100vh;
-  grid-template-areas:
-  "nav main main"
-  "nav main main"
-  "nav main main";
-  grid-template-columns: .5fr 1fr 1fr;
-  grid-template-rows: .5fr 1fr 1fr;
-  margin: 0 auto;
+  // display: grid;
+  // height: 100vh;
+  // grid-template-areas:
+  // "nav main main"
+  // "nav main main"
+  // "nav main main";
+  // grid-template-columns: .5fr 1fr 1fr;
+  // grid-template-rows: .5fr 1fr 1fr;
+  // margin: 0 auto;
 }
 
 /* Left-side page styling */
@@ -57,11 +57,14 @@ nav {
 
 button {
   @include button-style;
-  
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  background-color: antiquewhite;
 }
 
 h1 {
-  color:white;
+  color: black;
   text-align: center; 
 }
 
@@ -74,14 +77,33 @@ ul {
   list-style: none;
 }
 
-section ul {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  font-size: 26px;
-  height: 80%;
-  justify-content: space-around;
-  margin-left: -20px;
+// section ul {
+//   align-items: flex-start;
+//   display: flex;
+//   flex-direction: column;
+//   font-size: 26px;
+//   height: 80%;
+//   justify-content: space-around;
+//   margin-left: -20px;
+// }
+
+section {
+  background-color: aliceblue;
+  box-shadow: 5px 5px 10px #0b466d;
+  padding: 5px;
+  border-radius: 2px;
+  opacity: .95;
+  text-align: center;
+  margin: 10px;
+  width: 32%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.customer-data{
+  width: 32%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 

@@ -12,6 +12,5 @@ describe('CustomerCollection', () => {
 
     it('should be a function', () => {
         expect(CustomerCollection).to.be.a('function');
-      });
-
+    });
 });
