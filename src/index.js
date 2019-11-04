@@ -44,7 +44,6 @@ $('.login-button').on('click', function () {
 });
 
 $(".rooms-available-btn").on('click', function () {
-    console.log(user.findTotalRoomsAvailableForToday())
     $(".room1").toggle()
     $(".room2").hide()
 });
@@ -62,27 +61,24 @@ $(".rooms-occupied-btn").on('click', function () {
     $(".room2").hide()
 });
 
-$(".customer-search-btn").on('click', function () {
-    var searchVal = $('#customer-search').val();
-    var customerNames = customers.findAllByName(searchVal)
-    if (customerNames.length === 0) {
-        domUpdates.noCustomersFound()
-    } else {
-        domUpdates.appendCustomerNames(customerNames)
-    }
-    $('#customer-search').val('')
-});
+// $(".customer-search-btn").on('click', function () {
+//     var searchVal = $('#customer-search').val();
+//     var customerNames = customers.findAllByName(searchVal)
+//     if (customerNames.length === 0) {
+//         domUpdates.noCustomersFound()
+//     } else {
+//         domUpdates.appendCustomerNames(customerNames)
+//     }
+//     $('#customer-search').val('')
+// });
 
-$(".customer-results").on('click', function (e) {
-   let value = $('li').attr("data-id")
-    console.log('hii')
-    console.log(value)
-});
+// $(".customer-results").on('click', function (e) {
+//    let value = $('li').attr("data-id")
+// });
 
-$(".book-room-btn").on('click', function (e) {
-    let datePicked = $(".date-picked").val();
-    console.log(datePicked)
- });
+// $(".book-room-btn").on('click', function (e) {
+//     let datePicked = $(".date-picked").val();
+//  });
 
 
 

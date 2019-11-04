@@ -1,15 +1,30 @@
 import $ from "jquery";
 
 export default {
+    displayCustomerInfo(customer) {
+      $('.customer-bookings-title').attr('data-id', `${customer.id}`).text(`${customer.name}`)
+      $('#manager-customer-data').show();
+      $('#manager-customer-hotel-booking-info').show();
+      this.clearCustomerResults()
+      $('#customer-search').val('')
+      $('.customer-bookings').text(`Number of Bookings: ${customer.findAllBookings().length}`)
+      $('.customer-spending').text(`${customer.findTotalSpentOnRooms()}`)
+    },
+
+    clearCustomerResults() {
+      $('#customer-results-list').empty()
+    },
 
     appendCustomerNames(customers) {
-        $('.customer-results').empty()
-        customers.forEach(customer => {
-            $('.customer-results').append($("<li>").attr('data-id', `${customer.id}`).text(customer.name));
-        })
+      this.clearCustomerResults()
+      customers.forEach(customer => {
+          $('#customer-results-list').append($("<li>").attr('data-id', `${customer.id}`).text(customer.name));
+      })
     },
+
     noCustomersFound() {
-        $('.customer-results').empty()
-        $('.customer-results').append('<p> No Customers Found</p>')
+      this.clearCustomerResults()
+      $('#customer-results-list').append('<li> No Customers Found </li>')
     }
 }
+
