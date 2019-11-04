@@ -29,8 +29,10 @@ Promise.all([userData, roomData, bookingData]).then((promise) => {
     customerCollection = new CustomerCollection(userData);
     roomCollection = new RoomCollection(roomData);
     bookingCollection = new BookingCollection(bookingData);
-
+}).then(() => {
     manager = new Manager(customerCollection, roomCollection, bookingCollection);
-    let value = $('.total-revenue').html(manager.findTotalRevenueForToday())
-    console.log(manager)
-  });
+    console.log(manager.bookingCollection)
+    $('.total-revenue').html(manager.findTotalRevenueForToday())
+    $(".available-percentage").html(manager.findPercentageOccupied(Date.now()))
+    $('.total-available-rooms').html(manager.findTotalRoomsAvailableForToday().length)
+});

@@ -12,5 +12,5 @@ describe('RoomCollection', () => {
 
     it('should be a function', () => {
         expect(RoomCollection).to.be.a('function');
-      });
+    });
 });

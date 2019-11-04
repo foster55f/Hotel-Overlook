@@ -1,9 +1,8 @@
 import Room from './Room';
 
 class RoomCollection {
-    constructor() {
-        // this.rooms = RoomCollection.loadFromData();
-        this.rooms = this.assignData();
+    constructor(rooms) {
+        this.rooms = rooms;
     }
 
     findAvailableRooms(occupiedRoomNumbers) {
@@ -14,7 +13,7 @@ class RoomCollection {
         return rooms.reduce((acc, room) => {
             acc += room.costPerNight
             return acc
-        }, 0)
+        }, 0).toFixed(2)
     }
 
     calculatePercentageOccupied(occupiedRoomNumbers) {

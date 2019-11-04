@@ -1,8 +1,8 @@
 import User from './User';
 
 class Customer extends User {
-    constructor(userData, bookings, rooms) {
-        super(findBookings(bookings), findRooms(rooms))
+    constructor(userData, roomCollection, bookingCollection) {
+        super(bookingCollection, roomCollection)
         this.id = userData.id;
         this.name = userData.name;
 
@@ -16,7 +16,7 @@ class Customer extends User {
         let customerBookings = this.findAllBookings();
         let customerRooms = customerBookings.map(booking => booking.roomNumber)
         let rooms = this.roomCollection.findAllByNumbers(customerRooms)
-        return this.roomCollection.findRoomRevenue(rooms)
+        return this.roomCollection.findRoomsRevenue(rooms)
     }
 }
     

@@ -3,8 +3,8 @@ import CustomerCollection from './CustomerCollection';
 
 
 class Manager extends User {
-    constructor(customerCollection) {
-        super()
+    constructor(customerCollection,roomCollection,bookingCollection) {
+        super(bookingCollection,roomCollection)
         this.customerCollection = customerCollection;
     }
 
