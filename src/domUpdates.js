@@ -13,7 +13,8 @@ export default {
 
     displayRoomInfo(rooms) {
         $(".available-rooms").show(); 
-        rooms.forEach(room => {
+      rooms.forEach(room => {
+        $('#room-results-list').append($("<button></button>").attr('data-id', `${room.number}`).text(`Reserve ${room.number}`));
             $('#room-results-list').append($("<li>").attr('data-id', `${room.number}`).text(room.number));
             $('#room-results-list').append($("<li>").attr('data-id', `${room.number}`).text(`RoomType: ${room.roomType}`));
             $('#room-results-list').append($("<li>").attr('data-id', `${room.number}`).text(`BidetAvailable: ${room.bidetAvailable}`));
@@ -40,7 +41,7 @@ export default {
     },
 
     appendRoomPicked(room) {
-        $(".customer-bookings-filter").attr('data-id', `${room.number}`).text(`${room.number}`)
+        $(".customer-bookings-filter").attr('data-id', `${room.number}`).text(`Book Room # ${room.number}?`)
         // $(".customer-bookings-filter").attr('data-id', `${room.number}`).text(`${room.roomType}`)
 
     }

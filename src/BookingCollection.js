@@ -14,19 +14,11 @@ class BookingCollection {
         return this.bookings.filter(booking => booking.userId === customerId)
     }
 
-    // deleteFromData() {
-        
+    // static loadFromData() {
+    // return fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
+    //     .then(response => response.json())
+    //     .then(data => data.bookings.map(booking => new Booking(booking)))
     // }
 
-    static loadFromData() {
-    return fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
-        .then(response => response.json())
-        .then(data => data.bookings.map(booking => new Booking(booking)))
-    }
-
-
-    // getUserData(id) {
-    //     return this.data.find(user => user.id === id)
-    // }
 }
 export default BookingCollection;

@@ -39,12 +39,45 @@ Promise.all([userData, roomData, bookingData]).then((promise) => {
     $(".customer-bookings").html(customer.findAllBookings().length)
     $(".customer-spending").html(customer.findTotalSpentOnRooms())
     // $('.total-available-rooms').html(manager.findTotalRoomsAvailableForToday().length)
-    pageLoadAfterFetch()
+    // pageLoadAfterFetch()
+});
+
+$(".date-picked").on('change', function () {
+    $('.selection').show();
+    var datePicked = $(".date-picked").val();
+    datePicked = datePicked.replace(/-/g, "/")
+    let roomsAvailable = customer.findTotalRoomsAvailableForToday(datePicked)
+    domUpdates.displayRoomInfo(roomsAvailable);
+    $('.customer-bookings-title').attr("data-id")
+});
+
+$('.selection').on('change', function () {
+    $('#room-results-list').empty()
+    var searchVal = $('.selection').val();
+    let roomsByType = customer.filterAvailableRoomsByType(searchVal)
+    domUpdates.displayRoomInfo(roomsByType); 
+    let id = $(".room-results-list").attr("data-id")
+});
+
+$("#room-results-list").on('click', function (e) {  
+    let value = $(e.target).data("id")
+    let room = roomCollection.findByNumber(value)
+    domUpdates.appendRoomPicked(room) 
 });
 
 
-// function pageLoadAfterFetch() {
-//     let id = localStorage.getItem('key')
-//     let currentUser = customerCollection.getUserData(parseInt(id))
-//     $('.welcome-user').text(`Welcome ${currentUser.name}`)
-//   }
+$('#customer-results-list').on('click', function (e) {  
+    let value = $(e.target).data("id")
+    var datePicked = $(".date-picked").val();
+    datePicked = datePicked.replace(/-/g, "/")
+    let customer = manager.customerCollection.getUserData(parseInt(value))
+    domUpdates.displayCustomerInfo(customer);
+});
+
+$(".book-room-btn").on('click', function (e) {
+  let userID = $('.customer-bookings-title').attr("data-id")
+  var datePicked = $(".date-picked").val();
+    datePicked = datePicked.replace(/-/g, "/")
+    var roomNum = $(".customer-bookings-filter").attr('data-id')
+    fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', { method:'Post',headers:{'Content-Type': "application/json"}, body:JSON.stringify({userID:parseInt(userID), date:datePicked, roomNumber:parseInt(roomNum)})})
+ });
