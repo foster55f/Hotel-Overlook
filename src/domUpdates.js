@@ -14,12 +14,12 @@ export default {
     displayRoomInfo(rooms) {
         $(".available-rooms").show(); 
         rooms.forEach(room => {
-            $('#room-results-list').append($("<li>").text(room.number));
-            $('#room-results-list').append($("<li>").text(`RoomType: ${room.roomType}`));
-            $('#room-results-list').append($("<li>").text(`BidetAvailable: ${room.bidetAvailable}`));
-            $('#room-results-list').append($("<li>").text(`BedSize: ${room.bedSize}`));
-            $('#room-results-list').append($("<li>").text(`Number of Beds: ${room.numBeds}`));
-            $('#room-results-list').append($("<li>").text(`Cost Per Night: ${room.costPerNight}`));
+            $('#room-results-list').append($("<li>").attr('data-id', `${room.number}`).text(room.number));
+            $('#room-results-list').append($("<li>").attr('data-id', `${room.number}`).text(`RoomType: ${room.roomType}`));
+            $('#room-results-list').append($("<li>").attr('data-id', `${room.number}`).text(`BidetAvailable: ${room.bidetAvailable}`));
+            $('#room-results-list').append($("<li>").attr('data-id', `${room.number}`).text(`BedSize: ${room.bedSize}`));
+            $('#room-results-list').append($("<li>").attr('data-id', `${room.number}`).text(`Number of Beds: ${room.numBeds}`));
+            $('#room-results-list').append($("<li>").attr('data-id', `${room.number}`).text(`Cost Per Night: ${room.costPerNight}`));
         })
     },
 
@@ -37,6 +37,12 @@ export default {
     noCustomersFound() {
       this.clearCustomerResults()
       $('#customer-results-list').append('<li> No Customers Found </li>')
+    },
+
+    appendRoomPicked(room) {
+        $(".customer-bookings-filter").attr('data-id', `${room.number}`).text(`${room.number}`)
+        // $(".customer-bookings-filter").attr('data-id', `${room.number}`).text(`${room.roomType}`)
+
     }
 }
 
