@@ -5,8 +5,7 @@ class User {
         this.roomCollection = roomCollection
     }
 
-    findTotalRoomsAvailableForToday() {
-        let date = Date.now();
+    findTotalRoomsAvailableForToday(date) {
         let bookedRoomNumbers = this.bookingCollection.findBookedRoomNumbers(date);
         let roomsAvailable = this.roomCollection.findAvailableRooms(bookedRoomNumbers);
         return roomsAvailable

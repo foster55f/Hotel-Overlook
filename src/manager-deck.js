@@ -57,10 +57,27 @@ $('#customer-search').on('keyup', function () {
     }
 });
 
-$('#customer-results-list').on('click', function (e) {
-   let value = $(e.target).data("id")
-   let customer = manager.customerCollection.getUserData(parseInt(value))
-   domUpdates.displayCustomerInfo(customer)
+$(".date-picked").on('change', function () {
+    $('.selection').show();
+    var datePicked = $(".date-picked").val();
+    datePicked = datePicked.replace(/-/g, "/")
+    let roomsAvailable = manager.findTotalRoomsAvailableForToday(datePicked)
+    domUpdates.displayRoomInfo(roomsAvailable);
+});
+
+$('.selection').on('change', function () {
+    $('#room-results-list').empty()
+    var searchVal = $('.selection').val();
+    let roomsByType = manager.filterAvailableRoomsByType(searchVal)
+    domUpdates.displayRoomInfo(roomsByType);            
+});
+
+$('#customer-results-list').on('click', function (e) {  
+    let value = $(e.target).data("id")
+    var datePicked = $(".date-picked").val();
+    datePicked = datePicked.replace(/-/g, "/")
+    let customer = manager.customerCollection.getUserData(parseInt(value))
+    domUpdates.displayCustomerInfo(customer);
 });
 
 $(".book-room-btn").on('click', function (e) {

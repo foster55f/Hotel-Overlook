@@ -11,6 +11,18 @@ export default {
       $('.customer-spending').text(`${customer.findTotalSpentOnRooms()}`)
     },
 
+    displayRoomInfo(rooms) {
+        $(".available-rooms").show(); 
+        rooms.forEach(room => {
+            $('#room-results-list').append($("<li>").text(room.number));
+            $('#room-results-list').append($("<li>").text(`RoomType: ${room.roomType}`));
+            $('#room-results-list').append($("<li>").text(`BidetAvailable: ${room.bidetAvailable}`));
+            $('#room-results-list').append($("<li>").text(`BedSize: ${room.bedSize}`));
+            $('#room-results-list').append($("<li>").text(`Number of Beds: ${room.numBeds}`));
+            $('#room-results-list').append($("<li>").text(`Cost Per Night: ${room.costPerNight}`));
+        })
+    },
+
     clearCustomerResults() {
       $('#customer-results-list').empty()
     },
@@ -18,7 +30,7 @@ export default {
     appendCustomerNames(customers) {
       this.clearCustomerResults()
       customers.forEach(customer => {
-          $('#customer-results-list').append($("<li>").attr('data-id', `${customer.id}`).text(customer.name));
+        $('#customer-results-list').append($("<li>").attr('data-id', `${customer.id}`).text(customer.name));
       })
     },
 
