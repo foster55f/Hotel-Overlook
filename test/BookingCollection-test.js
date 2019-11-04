@@ -118,15 +118,15 @@ describe('BookingCollection', () => {
         expect(bookingCollection.findBookedRoomNumbers("2019/11/06")).to.eql([18,7]);
     });
     
-    it('should find all the bookings for a customer', () => {
-        expect(bookingCollection.findAllForCustomer()).to.eql([{
-            "id": 1572293130156,
-            "userID": 19,
-            "date": "2019/11/06",
-            "roomNumber": 18,
-            "roomServiceCharges": [
+    // it('should find all the bookings for a customer', () => {
+    //     expect(bookingCollection.findAllForCustomer()).to.eql([{
+    //         "id": 1572293130156,
+    //         "userID": 19,
+    //         "date": "2019/11/06",
+    //         "roomNumber": 18,
+    //         "roomServiceCharges": [
             
-            ]
-        },]);
-      });
+    //         ]
+    //     },]);
+    //   });
 });

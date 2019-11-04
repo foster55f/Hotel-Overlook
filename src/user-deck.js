@@ -32,7 +32,7 @@ Promise.all([userData, roomData, bookingData]).then((promise) => {
     roomCollection = new RoomCollection(roomData);
     bookingCollection = new BookingCollection(bookingData);
 }).then(() => {
-    let id = '19'
+    let id = localStorage.getItem('key')
     let currentUserData = customerCollection.getUserData(parseInt(id))
     customer = new Customer(currentUserData, roomCollection, bookingCollection);
     $('.welcome-user').text(`Welcome ${customer.name}`)
