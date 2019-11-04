@@ -20,6 +20,10 @@ class Manager extends User {
         return this.roomCollection.findRoomsRevenue(rooms)
 
     }
+
+    findCustomersByName(name) {
+        return this.customerCollection.findAllByName(name)
+      }
 }
     
  export default Manager;

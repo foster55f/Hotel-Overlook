@@ -4,6 +4,7 @@ import './css/base.scss';
 import domUpdates from "./domUpdates";
 import User from './User';
 import Manager from './Manager';
+import Booking from './Booking';
 import BookingCollection from './BookingCollection';
 import RoomCollection from './RoomCollection';
 import CustomerCollection from './CustomerCollection';
@@ -26,13 +27,45 @@ Promise.all([userData, roomData, bookingData]).then((promise) => {
     roomData = promise[1];
     bookingData = promise[2];
 }).then(() => {
-    customerCollection = new CustomerCollection(userData);
-    roomCollection = new RoomCollection(roomData);
-    bookingCollection = new BookingCollection(bookingData);
+  let rooms = roomData.map(roomInfo => new Room(roomInfo))
+  let bookings = bookingData.map(bookingInfo => new Booking(bookingInfo))
+
+  roomCollection = new RoomCollection(rooms);
+  bookingCollection = new BookingCollection(bookings);
+
+  let customers = userData.map(userInfo => new Customer(userInfo, roomCollection, bookingCollection))
+  customerCollection = new CustomerCollection(customers);
 }).then(() => {
     manager = new Manager(customerCollection, roomCollection, bookingCollection);
-    console.log(manager.bookingCollection)
     $('.total-revenue').html(manager.findTotalRevenueForToday())
     $(".available-percentage").html(manager.findPercentageOccupied(Date.now()))
     $('.total-available-rooms').html(manager.findTotalRoomsAvailableForToday().length)
 });
+
+$('#customer-search').on('keyup', function () {
+    var searchVal = $('#customer-search').val();
+    var customers = manager.findCustomersByName(searchVal);
+
+    domUpdates.clearCustomerResults()
+
+    if (searchVal === '') return
+
+    if (customers.length === 0) {
+        domUpdates.noCustomersFound()
+    } else {
+        domUpdates.appendCustomerNames(customers)
+    }
+});
+
+$('#customer-results-list').on('click', function (e) {
+   let value = $(e.target).data("id")
+   let customer = manager.customerCollection.getUserData(parseInt(value))
+   domUpdates.displayCustomerInfo(customer)
+});
+
+$(".book-room-btn").on('click', function (e) {
+  let userID = $('.customer-bookings-title').attr("data-id")
+  var datePicked = $(".date-picked").val();
+  datePicked = datePicked.replace(/-/g, "/")
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', { method:'Post',headers:{'Content-Type': "application/json"}, body:JSON.stringify({userID:parseInt(userID), date:datePicked, roomNumber:4})})
+ });

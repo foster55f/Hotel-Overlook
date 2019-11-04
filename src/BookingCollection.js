@@ -11,7 +11,7 @@ class BookingCollection {
     }
 
     findAllForCustomer(customerId) {
-        return this.bookings.filter(booking => booking.userID === customerId)
+        return this.bookings.filter(booking => booking.userId === customerId)
     }
 
     // deleteFromData() {
