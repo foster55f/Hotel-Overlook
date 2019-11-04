@@ -17,9 +17,9 @@ body {
   // display: grid;
   // height: 100vh;
   // grid-template-areas:
-  // "nav main main"
-  // "nav main main"
-  // "nav main main";
+  // "sec sec"
+  // "sec sec"
+  // ;
   // grid-template-columns: .5fr 1fr 1fr;
   // grid-template-rows: .5fr 1fr 1fr;
   // margin: 0 auto;
@@ -111,6 +111,16 @@ section {
 }
 
 #manager-customer-hotel-booking-info {
+  display: none;
+}
+
+.available-rooms {
+  display: none;
+  column-count: 2;
+  width: 50%;
+}
+
+.selection {
   display: none;
 }
 

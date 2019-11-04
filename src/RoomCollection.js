@@ -28,6 +28,10 @@ class RoomCollection {
         return this.rooms.filter(room => roomNumbers.includes(room.number))
     }
 
+    findByNumber(roomNumber) {
+        return this.rooms.find(room => roomNumber === room.number)
+    }
+
 
     // Async assignData() {
     //     this.rooms = await fetch()

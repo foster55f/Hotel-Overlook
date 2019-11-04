@@ -35,13 +35,17 @@
       <section class="customer-hotel-booking-info" id="manager-customer-hotel-booking-info">
         <h2>Book a Room</h2>
         <input class= "date-picked" type="date" id="start" name="trip-start">
-        <button class="book-room-btn" type="button" name="button"><span class="view">View</span>Book Room</button>
+        <button class="book-room-btn" type="button" name="button"><span class="view"></span>Book Room</button>
         <h2 class="customer-bookings-filter"><span>Pick Room Type:</span><select class="selection">
+          <option value="all">All</option>
           <option value="residential suite">Residential Suite</option>
           <option value="single room">Single Room</option>
           <option value="suite">Suite</option>
           <option value="junior suite">Junior Suite</option>
         </select>
+      </section>
+      <section class="available-rooms">
+          <ul id="room-results-list"></ul>
       </section>
   </body>
 </html>
