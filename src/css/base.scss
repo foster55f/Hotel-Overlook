@@ -14,19 +14,19 @@ body {
   background-image: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ), url("../images/clouds-daylight-environment-462146.jpg");
   background-repeat: no-repeat center center fixed;
   background-size: cover;
-}
-
-nav {
-  background-color: #0b466d;
-  color: white;
-  grid-area: nav;
-  
-  button{
-  @include button-style;
-    width: 85%;
-    margin-left: 18px;
   }
-}
+
+// nav {
+//   background-color: #0b466d;
+//   color: white;
+//   grid-area: nav;
+  
+//   button{
+//   @include button-style;
+//     width: 85%;
+//     margin-left: 18px;
+//   }
+// }
 
 .nav-text {
   align-items: center;
@@ -48,6 +48,7 @@ nav {
 button {
   @include button-style;
   border-radius: 5px;
+  line-height: 18px;
   padding: 5px;
   margin: 5px;
   background-color: antiquewhite;
@@ -64,6 +65,11 @@ h1 {
   text-align: center; 
   font-size: 48px;
   }
+}
+
+h3{
+  font-size: 25px;
+  color: darkseagreen;
 }
 
 label {
@@ -149,6 +155,21 @@ label{
 }
 
 #book-a-room {
+  color: darkseagreen;
+}
+
+h4 {
+  font-size: 25px;
+  color: darkseagreen;
+}
+
+h2 {
+  font-size: 25px;
+  color: darkseagreen;
+}
+
+span {
+  font-size: 25px;
   color: darkseagreen;
 }
 
