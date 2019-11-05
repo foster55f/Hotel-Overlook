@@ -54,6 +54,7 @@ Promise.all([userData, roomData, bookingData]).then((promise) => {
     let customerBookings= customer.findAllBookings()
     domUpdates.displayCustomerBookings(customer,customerBookings)
     $(".customer-spending").html(customer.findTotalSpentOnRooms())
+    $('.available-rooms').hide();
 });
 
 function initDom() {

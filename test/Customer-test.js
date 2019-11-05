@@ -6,63 +6,94 @@ import RoomCollection from '../src/RoomCollection';
 import BookingCollection from '../src/BookingCollection';
 import CustomerCollection from '../src/CustomerCollection';
 import Booking from '../src/Booking';
+import Room from '../src/Room';
+
 
 
 let customer;
 let mockUserData;
-let roomCollection
-
-// mockBookingCollectionData = [
-//             {
-//                 "id": 1572293130156,
-//                 "userID": 1,
-//                 "date": "2019/11/06",
-//                 "roomNumber": 1,
-//                 "roomServiceCharges": [
-                
-//                 ]
-//             },
-//             {
-//                 "id": 1572293130159,
-//                 "userID": 1,
-//                 "date": "2019/11/12",
-//                 "roomNumber": 2,
-//                 "roomServiceCharges": [
-                
-//                 ]
-
-                
-//     mockRoomData =  {
-//                       "number": 1,
-//                       "roomType": "residential suite",
-//                       "bidet": true,
-//                       "bedSize": "queen",
-//                       "numBeds": 1,
-//                       "costPerNight": 358.4
-//                     },
-//                     {
-//                       "number": 2,
-//                       "roomType": "suite",
-//                       "bidet": false,
-//                       "bedSize": "full",
-//                       "numBeds": 2,
-//                       "costPerNight": 477.38
-//     },
+let roomCollection;
+let mockBookingData;
+let bookingCollection;
+let mockRoomData;
 
 describe('Customer', function () {
     beforeEach(() => {
-        mockUserData = [     {
+        mockUserData = [{
             "id": 1,
             "name": "Leatha Ullrich"
         },
-        ]
-        // bookings = mockBookingData.map(bookingData = new Booking(bookingData)
-        // rooms = mockRoomData.map(roomData = new Room(roomData)
+        ],
+            mockBookingData = [
+                {
+                    "id": 1572293130156,
+                    "userID": 19,
+                    "date": "2019/11/06",
+                    "roomNumber": 18,
+                    "roomServiceCharges": [
+                
+                    ]
+                },
+                {
+                    "id": 1572293130159,
+                    "userID": 21,
+                    "date": "2019/11/12",
+                    "roomNumber": 8,
+                    "roomServiceCharges": [
+                
+                    ]
+                },
+                {
+                    "id": 1572293130159,
+                    "userID": 12,
+                    "date": "2019/10/29",
+                    "roomNumber": 10,
+                    "roomServiceCharges": [
+                
+                    ]
+                },
+                {
+                    "id": 1572293130159,
+                    "userID": 27,
+                    "date": "2019/11/15",
+                    "roomNumber": 4,
+                    "roomServiceCharges": [
+                
+                    ]
+                },
+                {
+                    "id": 1572293130160,
+                    "userID": 16,
+                    "date": "2019/11/06",
+                    "roomNumber": 7,
+                    "roomServiceCharges": [
+                
+                    ]
+                }
+            ],
+
+            mockRoomData= [
+                {
+                  "number": 1,
+                  "roomType": "residential suite",
+                  "bidet": true,
+                  "bedSize": "queen",
+                  "numBeds": 1,
+                  "costPerNight": 358.4
+                },
+                {
+                  "number": 2,
+                  "roomType": "suite",
+                  "bidet": false,
+                  "bedSize": "full",
+                  "numBeds": 2,
+                  "costPerNight": 477.38
+                },
+            ]
     
-        // bookingCollection = new BookingCollection(bookings)
-        // roomCollection = new RoomCollection(rooms)
-    
-        // new Customer(mockRoomData, roomCollection, bookingCollection)
+        bookingCollection = mockBookingData.map(bookingData => new Booking(bookingData));
+        roomCollection = mockRoomData.map(roomData => new Room(roomData))
+        new Customer(mockUserData, roomCollection, bookingCollection);
     });
 
     // check for instances of bookingCollection and CustomerCollection
@@ -70,8 +101,11 @@ describe('Customer', function () {
         expect(Customer).to.be.a('function');
     });
 
-    // it('should have an id', () => {
-    //     console.log(customer)
-    //     expect(customer.id).to.equal(1);
-    // });
+    it('should be an instance of bookingCollection', () => {
+        expect(bookingCollection).to.be.an.instanceOf(Booking);
+    });
+    
+    it('should be an instance of bookingCollection', () => {
+        expect(roomCollection).to.be.an.instanceOf(Booking);
+      });
 });

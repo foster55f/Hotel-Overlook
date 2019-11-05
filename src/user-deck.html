@@ -4,6 +4,7 @@
     <title>Webpack Starter Kit</title>
   </head>
   <body class="customer-full">
+    <h1>Hotel Overlook Info and Booking </h1>
     <h1 class="welcome-user">Welcome </h1>
     <section class="customer-data">
       <h1>Your Bookings:</h1>
@@ -12,7 +13,7 @@
     </section>
     <section class="customer-hotel-booking-info">
       <h2>Pick a Date to see Available Rooms: </h2>
-      <label for="start">Book a Room:</label> 
+      <label id='book-a-room'for="start">Book a Room:</label> 
       <input class= "date-picked" type="date" id="start" name="trip-start">
       <button class="book-room-btn" type="button" name="button" disabled><span class="view"></span>Book Room</button>
       <button class="reset-btn" type="button" name="button" disabled><span class="view"></span>Reset Search</button>
@@ -26,9 +27,11 @@
     </section>
   </section>
   <section class="available-rooms">
+      <h4>Room's Available: </h4>
       <ul id="room-results-list"></ul>
   </section>
   <section class="your-bookings">
+      <h4>Customer's Past, Current, and Upcoming bookings:</h4>
       <ul id="bookings-list"></ul>
   </section>
   </body>

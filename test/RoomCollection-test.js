@@ -53,9 +53,7 @@ describe('RoomCollection', () => {
         },  
     ]
       
-      let rooms = mockRooms.map(mockRoom => new Room(mockRoom))
-      console.log(rooms)
-        
+    let rooms = mockRooms.map(mockRoom => new Room(mockRoom))    
     roomCollection = new RoomCollection(rooms)
 });
 

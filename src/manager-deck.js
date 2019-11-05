@@ -44,6 +44,9 @@ today = yyyy + '/' + mm + '/' + dd;
     $('.total-revenue').html(manager.findTotalRevenueForDate(today))
     $(".available-percentage").html(manager.findPercentageOccupied(today))
     $('.total-available-rooms').html(manager.findTotalRoomsAvailableForDate(today).length)
+    $('.available-rooms').hide();
+    $('.your-bookings').hide();
+
 });
 
 function initDom() {
@@ -61,6 +64,8 @@ function initDom() {
 
     $(".date-picked").on('change', function () {
         $('.selection').show();
+        $('.available-rooms').show();
+
         var datePicked = $(".date-picked").val();
         datePicked = datePicked.replace(/-/g, "/")
         let roomsAvailable = manager.findTotalRoomsAvailableForDate(datePicked)
@@ -68,14 +73,25 @@ function initDom() {
         $('.customer-bookings-title').attr("data-id")
         $(".reset-btn").attr("disabled", false);
     });
-
     $(".reset-btn").on('click', function () {
         location.reload();
     });
    
     
-    $(".delete -id - button").on('click', function () {
-        console.log('hii')
+    $("#bookings-list").on('click', function (e) {
+        if ($(e.target).hasClass('delete-id-button')) { 
+            let id = $(e.target).data("id")
+            fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
+                method: 'delete',
+                headers: {
+                  'Content-Type': "application/json"
+                },
+                body: JSON.stringify({
+                    id: id
+                })
+            })
+            alert("Reservation Deleted!!");
+         }
     });
 
     $('.selection').on('change', function () {
@@ -109,6 +125,7 @@ function initDom() {
         
         let upComingReservations = manager.findUpcomingReservationsForCustomer(customer, today)
         domUpdates.displayCustomerInfo(customer);
+
         domUpdates.displayForManagerCustomerBookings(customer, customerBookings,upComingReservations)
     });
 

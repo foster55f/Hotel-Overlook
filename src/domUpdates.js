@@ -49,9 +49,7 @@ export default {
   },
 
   displayCustomerBookings(customer, customerBookings) {
-    console.log('hii')
     $(".your-bookings").show();
-    $('#bookings-list').append($("<li>").text(`Your Past, Current, and Upcoming bookings:`));
     customerBookings.forEach(booking => {
       $('#bookings-list').append($("<li>").text(booking.date));
       $('#bookings-list').append($("<li>").text(booking.id));
@@ -66,7 +64,6 @@ export default {
     var yyyy = today.getFullYear();
     today = yyyy + '/' + mm + '/' + dd;
     $(".your-bookings").show();
-    $('#bookings-list').append($("<li>").text(`Customer's Past, Current, and Upcoming bookings:`));
     upcomingReservations.forEach(booking => {
       // customerBookings.forEach(customerBooking => {
       //   if (customerBooking.id !== booking.id) {
@@ -75,7 +72,7 @@ export default {
       //     $('#bookings-list').append($("<li>").text(`Room: ${customerBooking.roomNumber}`));
       //   }
       // }) 
-        $('#bookings-list').append($("<button class=`delete-id-button`></button>").attr('data-id', `${booking.id}`).text(`Delete Reservation for : ${booking.date}`));
+        $('#bookings-list').append($("<button class = delete-id-button></button>").attr('data-id', `${booking.id}`).text(`Delete Reservation for : ${booking.date}`));
         $('#bookings-list').append($("<li>").text(booking.date));
         $('#bookings-list').append($("<li>").text(booking.id));
         $('#bookings-list').append($("<li>").text(`Room: ${booking.roomNumber}`));
