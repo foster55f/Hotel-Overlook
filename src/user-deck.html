@@ -11,9 +11,11 @@
       <h1>Total Spent On Rooms: $ <span class="customer-spending"></span></h1>
     </section>
     <section class="customer-hotel-booking-info">
-      <h2>Book a Room</h2>
+      <h2>Pick a Date to see Available Rooms: </h2>
+      <label for="start">Book a Room:</label> 
       <input class= "date-picked" type="date" id="start" name="trip-start">
-      <button class="book-room-btn" type="button" name="button"><span class="view"></span>Book Room</button>
+      <button class="book-room-btn" type="button" name="button" disabled><span class="view"></span>Book Room</button>
+      <button class="reset-btn" type="button" name="button" disabled><span class="view"></span>Reset Search</button>
       <h2 class="customer-bookings-filter"><span>Pick Room Type:</span><select class="selection">
           <option value="all">All</option>
         <option value="residential suite">Residential Suite</option>
@@ -25,6 +27,9 @@
   </section>
   <section class="available-rooms">
       <ul id="room-results-list"></ul>
+  </section>
+  <section class="your-bookings">
+      <ul id="bookings-list"></ul>
   </section>
   </body>
 </html>

@@ -10,22 +10,12 @@
         <h1>Total Available Rooms: <span class="total-available-rooms"></h1>
       </section>
       <section class="manager-customer-info">
-        <h1>Find Customer: <input id="customer-search" type="text" placeholder="Name"></h1>
+        <!-- <h1>Find Customer: <input id="customer-search" type="text" placeholder="Name"></h1> -->
+        <label for="customer-search">Find Customer:</label> 
+        <input id="customer-search" type="text" placeholder="Name">
         <h1 id="customer-results"></h1>
         <ul id="customer-results-list"></ul>
         <h1 id="bookings"></h1>
-        <!-- <article>
-          <h1>Book a Room</h1>
-          <input class= "date-picked" type="date" id="start" name="trip-start">
-          <button class="book-room-btn" type="button" name="button"><span class="view">View</span>Book Room</button>
-          <h2 class="customer-bookings"><span>Pick Room Type:</span><select class="selection">
-            <option value="residential suite">Residential Suite</option>
-            <option value="single room">Single Room</option>
-            <option value="suite">Suite</option>
-            <option value="junior suite">Junior Suite</option>
-          </select>
-          <h1 id="future-bookings"></h1>
-        </article> -->
       </section>
       <section class="customer-data" id="manager-customer-data">
           <h1 class="customer-bookings-title"></h1>
@@ -33,9 +23,10 @@
           <h3>Total Spent On Rooms: $ <span class="customer-spending"></span></h3>
         </section>
       <section class="customer-hotel-booking-info" id="manager-customer-hotel-booking-info">
-        <h2>Book a Room</h2>
+        <h2>Pick a Date to see Available Rooms: </h2>
         <input class= "date-picked" type="date" id="start" name="trip-start">
-        <button class="book-room-btn" type="button" name="button"><span class="view"></span>Book Room</button>
+        <button class="book-room-btn" type="button" name="button" disabled><span class="view"></span>Book Room</button>
+        <button class="reset-btn" type="button" name="button" disabled><span class="view"></span>Reset Search</button>
         <h2 class="customer-bookings-filter"><span>Pick Room Type:</span><select class="selection">
           <option value="all">All</option>
           <option value="residential suite">Residential Suite</option>
@@ -46,6 +37,9 @@
       </section>
       <section class="available-rooms">
           <ul id="room-results-list"></ul>
+      </section>
+      <section class="your-bookings">
+          <ul id="bookings-list"></ul>
       </section>
   </body>
 </html>

@@ -1,6 +1,8 @@
 const chai = require('chai');
 const expect = chai.expect;
 import CustomerCollection from '../src/CustomerCollection';
+import RoomCollection from '../src/RoomCollection';
+import Customer from '../src/Customer';
 
 let mockCustomerData;
 let customerCollection
@@ -28,10 +30,13 @@ describe('CustomerCollection', () => {
                 {
                     "id": 5,
                     "name": "Rhiannon Little"
-                },
+            },
+                
         ]
-        
-        customerCollection = new CustomerCollection(mockCustomerData)
+        roomCollection = new RoomCollection([]);
+        bookingCollection = new BookingCollection([]);
+        let customers = mockCustomerData.map(customerData => new Customer(customerData, roomCollection, bookingCollection))
+        customerCollection = new CustomerCollection(customers)
     });
 
     it('should be a function', () => {

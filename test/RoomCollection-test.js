@@ -1,6 +1,8 @@
 const chai = require('chai');
 const expect = chai.expect;
 import RoomCollection from '../src/RoomCollection';
+import Room from '../src/Room';
+
 
 let mockRooms;
 let roomCollection;
@@ -50,16 +52,19 @@ describe('RoomCollection', () => {
           "costPerNight": 340.17
         },  
     ]
+      
+      let rooms = mockRooms.map(mockRoom => new Room(mockRoom))
+      console.log(rooms)
         
-    roomCollection = new RoomCollection(mockRooms)
+    roomCollection = new RoomCollection(rooms)
 });
 
     it('should be a function', () => {
         expect(RoomCollection).to.be.a('function');
     });
-
+// check for instance
     it('should have a list of rooms', () => {
-        expect(roomCollection.rooms).to.eql([
+        expect(roomCollection.rooms.length).to.eql([
             {
               "number": 1,
               "roomType": "residential suite",
