@@ -14,20 +14,8 @@ body {
   background-image: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ), url("../images/clouds-daylight-environment-462146.jpg");
   background-repeat: no-repeat center center fixed;
   background-size: cover;
-  // display: ;
-  // height: 100vh;
-  // grid-template-areas:
-  // "sec sec sec"
-  // "sec sec sec"
-  // "sec sec sec"
-
-  ;
-  grid-template-columns: .5fr 1fr 1fr;
-  grid-template-rows: .5fr 1fr 1fr;
-  margin: 0 auto;
 }
 
-/* Left-side page styling */
 nav {
   background-color: #0b466d;
   color: white;
@@ -87,16 +75,6 @@ ul {
   list-style: none;
 }
 
-// section ul {
-//   align-items: flex-start;
-//   display: flex;
-//   flex-direction: column;
-//   font-size: 26px;
-//   height: 80%;
-//   justify-content: space-around;
-//   margin-left: -20px;
-// }
-
 section {
   background-color: aliceblue;
   box-shadow: 5px 5px 10px #0b466d;
@@ -142,8 +120,13 @@ label{
 }
 
 #room-results-list{
-  height: 100px;
+  height: 200px;
   overflow: scroll;
+}
+
+#search-customer{
+  color: darkseagreen;
+
 }
 
 #customer-results-list {
@@ -152,6 +135,24 @@ label{
   }
   li{ cursor: pointer; }
 }
+
+#user{
+  color: darkseagreen;
+}
+
+#userColor{
+  color: darkseagreen;
+}
+
+#front-title{
+  color: darkseagreen;
+}
+
+#book-a-room {
+  color: darkseagreen;
+}
+
+
 
 
 
