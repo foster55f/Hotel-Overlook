@@ -7,7 +7,7 @@ import Booking from '../src/Booking';
 let mockBookingData
 let booking;
 
-describe('Booking', () => {
+describe.only('Booking', () => {
 
     beforeEach(() => {
         mockBookingData = 
