@@ -36,9 +36,9 @@ $('.login-button').on('click', function () {
     var password = $(".userName-password").val()
     var id = user.slice(-2)
     localStorage.setItem('key',id)
-    if (user === 'manager') {
+    if (user === 'manager' && password === 'overlook2019') {
         window.location = "./manager-deck.html";
-    } else {
+    } else if (user.includes('customer') && password === 'overlook2019' && user.length > 1){
         window.location = "./user-deck.html";
     }
 });

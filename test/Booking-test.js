@@ -10,7 +10,7 @@ let booking;
 describe('Booking', () => {
 
     beforeEach(() => {
-        mockBookingData = [
+        mockBookingData = 
             {
                 "id": 1572293130156,
                 "userID": 19,
@@ -19,45 +19,9 @@ describe('Booking', () => {
                 "roomServiceCharges": [
                 
                 ]
-            },
-            {
-                "id": 1572293130159,
-                "userID": 21,
-                "date": "2019/11/12",
-                "roomNumber": 8,
-                "roomServiceCharges": [
-                
-                ]
-            },
-            {
-                "id": 1572293130159,
-                "userID": 12,
-                "date": "2019/10/29",
-                "roomNumber": 10,
-                "roomServiceCharges": [
-                
-                ]
-            },
-            {
-                "id": 1572293130159,
-                "userID": 27,
-                "date": "2019/11/15",
-                "roomNumber": 4,
-                "roomServiceCharges": [
-                
-                ]
-            },
-            {
-                "id": 1572293130160,
-                "userID": 16,
-                "date": "2019/11/06",
-                "roomNumber": 7,
-                "roomServiceCharges": [
-                
-                ]
-            },
-        ]
-            booking = new Booking(mockBookingData[0])
+            }
+        
+            booking = new Booking(mockBookingData)
     });
     it('should be a function', () => {
         expect(Booking).to.be.a('function');

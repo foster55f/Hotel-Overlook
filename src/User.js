@@ -5,14 +5,14 @@ class User {
         this.roomCollection = roomCollection
     }
 
-    findTotalRoomsAvailableForToday(date) {
+    findTotalRoomsAvailableForDate(date) {
         let bookedRoomNumbers = this.bookingCollection.findBookedRoomNumbers(date);
         let roomsAvailable = this.roomCollection.findAvailableRooms(bookedRoomNumbers);
         return roomsAvailable
     }
 
-    filterAvailableRoomsByType(roomType) {
-        let availableRooms = this.findTotalRoomsAvailableForToday();
+    filterAvailableRoomsByType(roomType, date) {
+        let availableRooms = this.findTotalRoomsAvailableForDate(date);
         return this.roomCollection.filterByRoomType(roomType, availableRooms)
     }
 }

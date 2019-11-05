@@ -13,8 +13,7 @@ class Manager extends User {
         return this.roomCollection.calculatePercentageOccupied(bookedRoomNumbers)
     }
 
-    findTotalRevenueForToday() {
-        let date = Date.now()
+    findTotalRevenueForDate(date) {
         let bookedRoomNumbers = this.bookingCollection.findBookedRoomNumbers(date)
         let rooms = this.roomCollection.findAllByNumbers(bookedRoomNumbers)
         return this.roomCollection.findRoomsRevenue(rooms)
@@ -23,7 +22,12 @@ class Manager extends User {
 
     findCustomersByName(name) {
         return this.customerCollection.findAllByName(name)
-      }
+    }
+    
+    findUpcomingReservationsForCustomer(customer, date) {
+        let customerBookings = customer.findAllBookings()
+        return customerBookings.filter(booking => booking.date > date)
+    }
 }
     
  export default Manager;
