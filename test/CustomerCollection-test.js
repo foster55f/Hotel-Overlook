@@ -3,6 +3,8 @@ const expect = chai.expect;
 import CustomerCollection from '../src/CustomerCollection';
 import RoomCollection from '../src/RoomCollection';
 import BookingCollection from '../src/BookingCollection';
+import Booking from '../src/Booking';
+
 
 import Customer from '../src/Customer';
 
@@ -10,9 +12,10 @@ let mockCustomerData;
 let customerCollection
 let roomCollection;
 let bookingCollection;
+let booking;
 
 
-describe.only('CustomerCollection', () => {
+describe('CustomerCollection', () => {
     beforeEach(() => {
         mockCustomerData = [
                 {

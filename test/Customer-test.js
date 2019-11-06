@@ -16,18 +16,19 @@ let roomCollection;
 let mockBookingData;
 let bookingCollection;
 let mockRoomData;
+let bookings;
+let rooms;
 
 describe('Customer', function () {
     beforeEach(() => {
-        mockUserData = [{
+        mockUserData = {
             "id": 1,
             "name": "Leatha Ullrich"
         },
-        ],
             mockBookingData = [
                 {
                     "id": 1572293130156,
-                    "userID": 19,
+                    "userID": 1,
                     "date": "2019/11/06",
                     "roomNumber": 18,
                     "roomServiceCharges": [
@@ -45,7 +46,7 @@ describe('Customer', function () {
                 },
                 {
                     "id": 1572293130159,
-                    "userID": 12,
+                    "userID": 1,
                     "date": "2019/10/29",
                     "roomNumber": 10,
                     "roomServiceCharges": [
@@ -91,9 +92,12 @@ describe('Customer', function () {
                 },
             ]
     
-        bookingCollection = mockBookingData.map(bookingData => new Booking(bookingData));
-        roomCollection = mockRoomData.map(roomData => new Room(roomData))
-        new Customer(mockUserData, roomCollection, bookingCollection);
+            bookings = mockBookingData.map(bookingData => new Booking(bookingData));
+            rooms = mockRoomData.map(roomData => new Room(roomData))
+    
+            bookingCollection = new BookingCollection(bookings)
+            roomCollection = new RoomCollection(rooms)
+            customer = new Customer(mockUserData, roomCollection, bookingCollection);
     });
 
     // check for instances of bookingCollection and CustomerCollection
@@ -108,4 +112,17 @@ describe('Customer', function () {
     // it('should be an instance of bookingCollection', () => {
     //     expect(roomCollection).to.be.an.instanceOf(Booking);
     //   });
+
+    it('should find all bookings', () => {
+        console.log(customer)
+        expect(customer.findAllBookings().length).to.equal(2);
+    });
+
+    it('should find total spent on rooms', () => {
+        expect(customer.findTotalSpentOnRooms()).to.equal('0.00');
+    });
+
+    it('should find total spent on rooms', () => {
+        expect(customer.findTotalSpentOnRooms()).to.equal('0.00');
+    });
 });

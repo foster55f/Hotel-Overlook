@@ -3,18 +3,33 @@ const expect = chai.expect;
 
 import Manager from '../src/Manager';
 import BookingCollection from '../src/BookingCollection';
+import RoomCollection from '../src/RoomCollection';
 import CustomerCollection from '../src/CustomerCollection';
+import Customer from '../src/Customer'; 
+import Booking from '../src/Booking';
+import Room from '../src/Room';
+
+
 
 let mockUserData;
-let mockBookingData
+let mockBookingData;
+let mockRoomData;
+let bookings;
+let rooms;
+let bookingCollection;
+let roomCollection;
+let mockCustomerData;
+let customers
+let customerCollection
+let manager
 
-describe.only('Manager', function () {
+describe('Manager', function () {
     beforeEach(() => {
         mockUserData = [{
             "id": 1,
             "name": "Leatha Ullrich"
-        },
-        ],
+        }],
+        
             mockBookingData = [
                 {
                     "id": 1572293130156,
@@ -78,21 +93,38 @@ describe.only('Manager', function () {
 
         bookingCollection = new BookingCollection(bookings)
         roomCollection = new RoomCollection(rooms)
-
-        customers = mockCustomerData.map(customerData => new Customer(customerData, roomCollection, bookingCollection))
+        customers = mockUserData.map(customerData => new Customer(customerData, roomCollection, bookingCollection))
         customerCollection = new CustomerCollection(customers)
 
-        new Manager(customerCollection, roomCollection, bookingCollection);
+        manager = new Manager(customerCollection, roomCollection, bookingCollection);
     });
     it('should be a function', () => {
         expect(Manager).to.be.a('function');
     });
 
-    it('should be an instance of bookingCollection', () => {
-        expect(bookingCollection).to.be.an.instanceOf(Booking);
-    });
+    // it('should be an instance of bookingCollection', () => {
+    //     expect(bookingCollection).to.be.an.instanceOf(BookingCollection);
+    // });
     
-    it('should be an instance of bookingCollection', () => {
-        expect(roomCollection).to.be.an.instanceOf(Booking);
-      });
+    // it('should be an instance of bookingCollection', () => {
+    //     expect(roomCollection).to.be.an.instanceOf(Booking);
+    //   });
+
+    it('should find percentage occupied', () => {
+        expect(manager.findPercentageOccupied("2019/11/06")).to.eql(100);
+    });
+
+    it('should find percentage occupied', () => {
+        expect(manager.findTotalRevenueForDate("2019/11/06")).to.equal('300.00');
+    });
+
+    it('should find percentage occupied', () => {
+        expect(manager.findCustomersByName("Leatha Ullrich").length).to.equal(1);
+    });
+
+    it('should find upcoming reservations for customer', () => {
+        let customer = customers[0]
+        expect(manager.findUpcomingReservationsForCustomer(customer, "2019/11/06").length).to.equal(2);
+    });
+
   });

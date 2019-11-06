@@ -60,7 +60,6 @@ describe('RoomCollection', () => {
     it('should be a function', () => {
         expect(RoomCollection).to.be.a('function');
     });
-// check for instance
     it('should have a list of rooms', () => {
         expect(roomCollection.rooms.length).to.equal(5);
     });
