@@ -59,13 +59,18 @@ Promise.all([userData, roomData, bookingData]).then((promise) => {
 
 function initDom() {
     $(".date-picked").on('change', function () {
-        $('.selection').show();
         var datePicked = $(".date-picked").val();
         datePicked = datePicked.replace(/-/g, "/")
-        let roomsAvailable = customer.findTotalRoomsAvailableForDate(datePicked)
-        domUpdates.displayRoomInfo(roomsAvailable);
-        $('.customer-bookings-title').attr("data-id")
-        $(".reset-btn").attr("disabled", false);
+        // let roomsAvailable = customer.findTotalRoomsAvailableForDate(datePicked)
+        let roomsAvailable = []
+        if (roomsAvailable.length === 0) {
+            domUpdates.displayNoRoomsAvailable()
+        } else {
+            domUpdates.displayRoomInfo(roomsAvailable);
+            $('.customer-bookings-title').attr("data-id")
+            $(".reset-btn").attr("disabled", false);
+            $('.selection').show();
+        }
     });
 
     $('.selection').on('change', function () {
@@ -95,6 +100,7 @@ function initDom() {
         fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', { method: 'Post', headers: { 'Content-Type': "application/json" }, body: JSON.stringify({ userID: parseInt(userID), date: datePicked, roomNumber: parseInt(roomNum) }) })
             .catch(data => console.log('There was error with your Reservation', data))
         alert("Thanks for your Reservation!!");
+        location.reload();
         $(".book-room-btn").attr("disabled", true);
     });
 }

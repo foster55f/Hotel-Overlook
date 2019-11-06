@@ -2,9 +2,13 @@ const chai = require('chai');
 const expect = chai.expect;
 
 import Manager from '../src/Manager';
+import BookingCollection from '../src/BookingCollection';
+import CustomerCollection from '../src/CustomerCollection';
 
+let mockUserData;
+let mockBookingData
 
-describe('Manager', function () {
+describe.only('Manager', function () {
     beforeEach(() => {
         mockUserData = [{
             "id": 1,
@@ -14,48 +18,38 @@ describe('Manager', function () {
             mockBookingData = [
                 {
                     "id": 1572293130156,
-                    "userID": 19,
+                    "userID": 1,
                     "date": "2019/11/06",
-                    "roomNumber": 18,
-                    "roomServiceCharges": [
-                
-                    ]
+                    "roomNumber": 1,
+                    "roomServiceCharges": []
                 },
                 {
                     "id": 1572293130159,
-                    "userID": 21,
+                    "userID": 1,
                     "date": "2019/11/12",
-                    "roomNumber": 8,
-                    "roomServiceCharges": [
-                
-                    ]
+                    "roomNumber": 2,
+                    "roomServiceCharges": []
                 },
                 {
                     "id": 1572293130159,
-                    "userID": 12,
-                    "date": "2019/10/29",
-                    "roomNumber": 10,
-                    "roomServiceCharges": [
-                
-                    ]
+                    "userID": 1,
+                    "date": "2019/11/15",
+                    "roomNumber": 1,
+                    "roomServiceCharges": []
                 },
                 {
                     "id": 1572293130159,
                     "userID": 27,
                     "date": "2019/11/15",
-                    "roomNumber": 4,
-                    "roomServiceCharges": [
-                
-                    ]
+                    "roomNumber": 2,
+                    "roomServiceCharges": []
                 },
                 {
                     "id": 1572293130160,
                     "userID": 16,
                     "date": "2019/11/06",
-                    "roomNumber": 7,
-                    "roomServiceCharges": [
-                
-                    ]
+                    "roomNumber": 1,
+                    "roomServiceCharges": []
                 }
             ],
 
@@ -66,7 +60,7 @@ describe('Manager', function () {
                   "bidet": true,
                   "bedSize": "queen",
                   "numBeds": 1,
-                  "costPerNight": 358.4
+                  "costPerNight": 300.0
                 },
                 {
                   "number": 2,
@@ -74,13 +68,21 @@ describe('Manager', function () {
                   "bidet": false,
                   "bedSize": "full",
                   "numBeds": 2,
-                  "costPerNight": 477.38
+                  "costPerNight": 400.38
                 },
             ]
     
-        bookingCollection = mockBookingData.map(bookingData => new Booking(bookingData));
-        roomCollection = mockRoomData.map(roomData => new Room(roomData))
-        new Manager(mockCustomerData, roomCollection, bookingCollection);
+        
+        bookings = mockBookingData.map(bookingData => new Booking(bookingData));
+        rooms = mockRoomData.map(roomData => new Room(roomData))
+
+        bookingCollection = new BookingCollection(bookings)
+        roomCollection = new RoomCollection(rooms)
+
+        customers = mockCustomerData.map(customerData => new Customer(customerData, roomCollection, bookingCollection))
+        customerCollection = new CustomerCollection(customers)
+
+        new Manager(customerCollection, roomCollection, bookingCollection);
     });
     it('should be a function', () => {
         expect(Manager).to.be.a('function');

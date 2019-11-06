@@ -101,11 +101,11 @@ describe('Customer', function () {
         expect(Customer).to.be.a('function');
     });
 
-    it('should be an instance of bookingCollection', () => {
-        expect(bookingCollection).to.be.an.instanceOf(Booking);
-    });
+    // it('should be an instance of bookingCollection', () => {
+    //     expect(bookingCollection).to.be.an.instanceOf(Booking);
+    // });
     
-    it('should be an instance of bookingCollection', () => {
-        expect(roomCollection).to.be.an.instanceOf(Booking);
-      });
+    // it('should be an instance of bookingCollection', () => {
+    //     expect(roomCollection).to.be.an.instanceOf(Booking);
+    //   });
 });

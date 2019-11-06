@@ -138,6 +138,7 @@ function initDom() {
             { method: 'Post', headers: { 'Content-Type': "application/json" }, body: JSON.stringify({ userID: parseInt(userID), date: datePicked, roomNumber: parseInt(roomNum) }) })
             .catch(data => console.log('There was error with your Booking Reservation', data))
         alert("Reservation complete!!");
+        location.reload();
         $(".book-room-btn").attr("disabled", true);
     })
 }

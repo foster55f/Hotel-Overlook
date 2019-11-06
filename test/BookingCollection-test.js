@@ -8,7 +8,7 @@ let mockBookingCollectionData;
 let bookingCollection;
 
 
-describe.only('BookingCollection', () => {
+describe('BookingCollection', () => {
 
     beforeEach(() => {
         mockBookingCollectionData = [
