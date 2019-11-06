@@ -60,57 +60,15 @@ describe('RoomCollection', () => {
     it('should be a function', () => {
         expect(RoomCollection).to.be.a('function');
     });
-// check for instance
     it('should have a list of rooms', () => {
-        expect(roomCollection.rooms.length).to.eql([
-            {
-              "number": 1,
-              "roomType": "residential suite",
-              "bidet": true,
-              "bedSize": "queen",
-              "numBeds": 1,
-              "costPerNight": 358.4
-            },
-            {
-              "number": 2,
-              "roomType": "suite",
-              "bidet": false,
-              "bedSize": "full",
-              "numBeds": 2,
-              "costPerNight": 477.38
-            },
-            {
-              "number": 3,
-              "roomType": "single room",
-              "bidet": false,
-              "bedSize": "king",
-              "numBeds": 1,
-              "costPerNight": 491.14
-            },
-            {
-              "number": 4,
-              "roomType": "single room",
-              "bidet": false,
-              "bedSize": "queen",
-              "numBeds": 1,
-              "costPerNight": 429.44
-            },
-            {
-              "number": 5,
-              "roomType": "single room",
-              "bidet": true,
-              "bedSize": "queen",
-              "numBeds": 2,
-              "costPerNight": 340.17
-            },  
-        ]);
+        expect(roomCollection.rooms.length).to.equal(5);
     });
 
     it('should find available rooms', () => {
         expect(roomCollection.findAvailableRooms([3,2,4])).to.eql([    {
             "number": 1,
             "roomType": "residential suite",
-            "bidet": true,
+            "bidetAvailable": true,
             "bedSize": "queen",
             "numBeds": 1,
             "costPerNight": 358.4
@@ -118,7 +76,7 @@ describe('RoomCollection', () => {
             {
             "number": 5,
             "roomType": "single room",
-            "bidet": true,
+            "bidetAvailable": true,
             "bedSize": "queen",
             "numBeds": 2,
             "costPerNight": 340.17
@@ -166,7 +124,7 @@ describe('RoomCollection', () => {
         expect(roomCollection.findAllByNumbers([3,2,4])).to.eql( [ {
             "number": 2,
             "roomType": "suite",
-            "bidet": false,
+            "bidetAvailable": false,
             "bedSize": "full",
             "numBeds": 2,
             "costPerNight": 477.38
@@ -174,7 +132,7 @@ describe('RoomCollection', () => {
           {
             "number": 3,
             "roomType": "single room",
-            "bidet": false,
+            "bidetAvailable": false,
             "bedSize": "king",
             "numBeds": 1,
             "costPerNight": 491.14
@@ -182,7 +140,7 @@ describe('RoomCollection', () => {
           {
             "number": 4,
             "roomType": "single room",
-            "bidet": false,
+            "bidetAvailable": false,
             "bedSize": "queen",
             "numBeds": 1,
             "costPerNight": 429.44
@@ -193,7 +151,7 @@ describe('RoomCollection', () => {
         expect(roomCollection.findByNumber(4)).to.eql( {
             "number": 4,
             "roomType": "single room",
-            "bidet": false,
+            "bidetAvailable": false,
             "bedSize": "queen",
             "numBeds": 1,
             "costPerNight": 429.44

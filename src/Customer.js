@@ -9,7 +9,9 @@ class Customer extends User {
     }
 
     findAllBookings() {
-        return this.bookingCollection.findAllForCustomer(this.id)
+        return this.bookingCollection.findAllForCustomer(this.id).sort((a, b) => {
+            return new Date(a.date) - new Date(b.date)
+        })
     }
 
     findTotalSpentOnRooms() {

@@ -7,7 +7,6 @@ export default {
     $('#manager-customer-hotel-booking-info').show();
     this.clearCustomerResults()
     $('#customer-search').val('')
-    // $('.your-bookings').text(`Number of Bookings: ${customer.findAllBookings()}`)
     $('.customer-spending').text(`${customer.findTotalSpentOnRooms()}`)
   },
 
@@ -42,19 +41,21 @@ export default {
 
   appendRoomPicked(room) {
     $(".customer-bookings-filter").append('<button> Keep Searching </button>')
-      
     $(".customer-bookings-filter").attr('data-id', `${room.number}`).text(`Book Room # ${room.number}?`)
-    // $(".customer-bookings-filter").attr('data-id', `${room.number}`).text(`${room.roomType}`)
-
   },
 
   displayCustomerBookings(customer, customerBookings) {
     $(".your-bookings").show();
     customerBookings.forEach(booking => {
       $('#bookings-list').append($("<li>").text(booking.date));
-      $('#bookings-list').append($("<li>").text(booking.id));
-      $('#bookings-list').append($("<li>").text(`Room: ${booking.roomNumber}`));
+      $('#bookings-list').append($("<li class=last-li>").text(`Room: ${booking.roomNumber}`));
+
     })
+  },
+
+  displayNoRoomsAvailable() {
+    $(".available-rooms").show();
+    $(".available-rooms").attr('id', 'no-rooms-available').text("No Rooms Available Please Adjust Search");
   },
   
   displayForManagerCustomerBookings(customer, customerBookings, upcomingReservations) {
@@ -63,20 +64,16 @@ export default {
     var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
     today = yyyy + '/' + mm + '/' + dd;
+    let upcomingBookingIds = upcomingReservations.map(booking => booking.id)
     $(".your-bookings").show();
-    upcomingReservations.forEach(booking => {
-      // customerBookings.forEach(customerBooking => {
-      //   if (customerBooking.id !== booking.id) {
-      //     $('#bookings-list').append($("<li>").text(customerBooking.date));
-      //     $('#bookings-list').append($("<li>").text(customerBooking.id));
-      //     $('#bookings-list').append($("<li>").text(`Room: ${customerBooking.roomNumber}`));
-      //   }
-      // }) 
+    customerBookings.forEach(booking => {
+      if (upcomingBookingIds.includes(booking.id)) {
         $('#bookings-list').append($("<button class = delete-id-button></button>").attr('data-id', `${booking.id}`).text(`Delete Reservation for : ${booking.date}`));
-        $('#bookings-list').append($("<li>").text(booking.date));
-        $('#bookings-list').append($("<li>").text(booking.id));
-        $('#bookings-list').append($("<li>").text(`Room: ${booking.roomNumber}`));
-      })
+      }
+          $('#bookings-list').append($("<li>").text(booking.date));
+          $('#bookings-list').append($("<li>").text(booking.id));
+          $('#bookings-list').append($("<li class=last-li>").text(`Room: ${booking.roomNumber}`));     
+    })
   }
 }
 

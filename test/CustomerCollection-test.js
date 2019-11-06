@@ -2,10 +2,17 @@ const chai = require('chai');
 const expect = chai.expect;
 import CustomerCollection from '../src/CustomerCollection';
 import RoomCollection from '../src/RoomCollection';
+import BookingCollection from '../src/BookingCollection';
+import Booking from '../src/Booking';
+
+
 import Customer from '../src/Customer';
 
 let mockCustomerData;
 let customerCollection
+let roomCollection;
+let bookingCollection;
+let booking;
 
 
 describe('CustomerCollection', () => {
@@ -44,35 +51,14 @@ describe('CustomerCollection', () => {
     });
 
     it('should have a list of customers', () => {
-        expect(customerCollection.customers).to.eql([
-            {
-                "id": 1,
-                "name": "Leatha Ullrich"
-            },
-            {
-                "id": 2,
-                "name": "Rocio Schuster"
-            },
-            {
-                "id": 3,
-                "name": "Kelvin Schiller"
-            },
-            {
-                "id": 4,
-                "name": "Kennedi Emard"
-            },
-            {
-                "id": 5,
-                "name": "Rhiannon Little"
-            },
-    ]);
+        expect(customerCollection.customers.length).to.eql(5);
     });
 
     it('should return the user"s average number of hours slept per day', () => {
-        expect(customerCollection.findAllByName("Rhiannon Little")).to.eql([ { id: 5, name: 'Rhiannon Little'} ]);
+        expect(customerCollection.findAllByName("Rhiannon")).to.eql([ { id: 5, name: 'Rhiannon Little'} ]);
     });
 
     it('should return the user"s data', () => {
-        expect(customerCollection.getUserData(5)).to.eql({ id: 5, name: 'Rhiannon Little'});
+        expect(customerCollection.getUserData(5)).to.eql();
     });
 });
