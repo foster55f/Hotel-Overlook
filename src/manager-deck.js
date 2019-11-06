@@ -89,7 +89,7 @@ function initDom() {
                 body: JSON.stringify({
                     id: id
                 })
-            })
+            }).catch(data => console.log('There was an error deleting Reservation', data))
             alert("Reservation Deleted!!");
          }
     });
@@ -134,8 +134,10 @@ function initDom() {
         var datePicked = $(".date-picked").val();
         datePicked = datePicked.replace(/-/g, "/")
         var roomNum = $(".customer-bookings-filter").attr('data-id')
-        fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', { method: 'Post', headers: { 'Content-Type': "application/json" }, body: JSON.stringify({ userID: parseInt(userID), date: datePicked, roomNumber: parseInt(roomNum) }) })
-        alert("Thanks for your Reservation!!");
+        fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings',
+            { method: 'Post', headers: { 'Content-Type': "application/json" }, body: JSON.stringify({ userID: parseInt(userID), date: datePicked, roomNumber: parseInt(roomNum) }) })
+            .catch(data => console.log('There was error with your Booking Reservation', data))
+        alert("Reservation complete!!");
         $(".book-room-btn").attr("disabled", true);
     })
 }

@@ -7,7 +7,6 @@ export default {
     $('#manager-customer-hotel-booking-info').show();
     this.clearCustomerResults()
     $('#customer-search').val('')
-    // $('.your-bookings').text(`Number of Bookings: ${customer.findAllBookings()}`)
     $('.customer-spending').text(`${customer.findTotalSpentOnRooms()}`)
   },
 
@@ -42,10 +41,7 @@ export default {
 
   appendRoomPicked(room) {
     $(".customer-bookings-filter").append('<button> Keep Searching </button>')
-      
     $(".customer-bookings-filter").attr('data-id', `${room.number}`).text(`Book Room # ${room.number}?`)
-    // $(".customer-bookings-filter").attr('data-id', `${room.number}`).text(`${room.roomType}`)
-
   },
 
   displayCustomerBookings(customer, customerBookings) {

@@ -7,7 +7,7 @@ let mockRoomData;
 let room;
 
 
-describe.only('Room', () => {
+describe('Room', () => {
 
     beforeEach(() => {
         mockRoomData=  

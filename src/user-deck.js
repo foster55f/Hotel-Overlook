@@ -93,6 +93,7 @@ function initDom() {
         datePicked = datePicked.replace(/-/g, "/")
         var roomNum = $(".customer-bookings-filter").attr('data-id')
         fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', { method: 'Post', headers: { 'Content-Type': "application/json" }, body: JSON.stringify({ userID: parseInt(userID), date: datePicked, roomNumber: parseInt(roomNum) }) })
+            .catch(data => console.log('There was error with your Reservation', data))
         alert("Thanks for your Reservation!!");
         $(".book-room-btn").attr("disabled", true);
     });
