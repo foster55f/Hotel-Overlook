@@ -22,4 +22,4 @@ class Customer extends User {
     }
 }
     
- export default Customer;
+export default Customer;

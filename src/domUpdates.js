@@ -66,13 +66,14 @@ export default {
     today = yyyy + '/' + mm + '/' + dd;
     let upcomingBookingIds = upcomingReservations.map(booking => booking.id)
     $(".your-bookings").show();
+    $('#bookings-list').empty()
     customerBookings.forEach(booking => {
       if (upcomingBookingIds.includes(booking.id)) {
         $('#bookings-list').append($("<button class = delete-id-button></button>").attr('data-id', `${booking.id}`).text(`Delete Reservation for : ${booking.date}`));
       }
-          $('#bookings-list').append($("<li>").text(booking.date));
-          $('#bookings-list').append($("<li>").text(booking.id));
-          $('#bookings-list').append($("<li class=last-li>").text(`Room: ${booking.roomNumber}`));     
+      $('#bookings-list').append($("<li>").text(booking.date));
+      $('#bookings-list').append($("<li>").text(booking.id));
+      $('#bookings-list').append($("<li class=last-li>").text(`Room: ${booking.roomNumber}`));     
     })
   }
 }

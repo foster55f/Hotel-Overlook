@@ -17,7 +17,6 @@ class Manager extends User {
         let bookedRoomNumbers = this.bookingCollection.findBookedRoomNumbers(date)
         let rooms = this.roomCollection.findAllByNumbers(bookedRoomNumbers)
         return this.roomCollection.findRoomsRevenue(rooms)
-
     }
 
     findCustomersByName(name) {
@@ -30,4 +29,4 @@ class Manager extends User {
     }
 }
     
- export default Manager;
+export default Manager;
